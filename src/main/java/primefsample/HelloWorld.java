@@ -23,7 +23,7 @@ public String sayHello(){
     return this.name;
 }
 
-@PostConstruct
+    @PostConstruct
     private void doSomething(){
 
     setName("Hans Meiser");

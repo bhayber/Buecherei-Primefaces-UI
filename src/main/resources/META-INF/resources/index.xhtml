@@ -15,12 +15,9 @@
     <div  id ="Überschrift" align="center" style="color: floralwhite">
         <h1>Bücherei Verwaltungsapplikation</h1>
     </div>
-
-    <!--<p:layout style="min-width:500px;min-height:200px;">-->
-        <!--<p:layoutUnit position="west" resizable="true">-->
             <p:menu style="min-width: 500px;alignment: left;min-height: 1024px">
                 <p:submenu label="Kundenbereich">
-                    <p:menuitem value="Kundendaten" outcome="/index" icon="ui-icon-star"/>
+                    <p:menuitem value="Kundendaten" outcome="/Kundendaten"  icon="ui-icon-info"/>
                     <p:menuitem value="Bücher ausleihen" outcome="/index" icon="ui-icon-star"/>
                 </p:submenu>
                 <p:submenu label="Bibliothikarbereich">
@@ -35,13 +32,5 @@
                     <p:menuitem value="Alle Bibliothikare anzeigen" outcome="/index" icon="ui-icon-document"/>
                 </p:submenu>
             </p:menu>
-
-
-        <!--<p:layoutUnit position="center">-->
-            <!--&lt;!&ndash;<P:inputText value="#{KundeView.name}"></P:inputText>&ndash;&gt;-->
-            <!--<iframe src="login.xhtml" height="800px" width="1024px"></iframe>-->
-        <!--</p:layoutUnit>-->
-    <!--</p:layout>-->
-
 </h:body>
 </html>

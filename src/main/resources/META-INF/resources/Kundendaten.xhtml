@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<h:head>
+</h:head>
+<h:body>
+
+    <h:form id="form">
+        <p:growl id="msgs" showDetail="true" />
+        <h:inputHidden  value="#{KundeView.email}"/>
+        <h:panelGrid columns="2"  style="width: 50%;align-content: inherit">
+
+            <p:outputLabel for="name" value="Name:" />
+            <p:inputText id="name" value="#{KundeView.aktuellerKunde.name}" />
+
+            <p:outputLabel for="adresse" value="Adresse:" />
+            <p:inputText id="adresse" value="#{KundeView.aktuellerKunde.adresse}" style="width: 70%" />
+
+            <p:outputLabel for="popup" value="Geburtsdatum:" />
+            <p:calendar id="popup" value="#{KundeView.aktuellerKunde.gebDatum}" />
+
+            <p:outputLabel for="phone" value="Phone:" />
+            <p:inputText id="phone" value="#{KundeView.aktuellerKunde.telmobile}" />
+
+            <p:outputLabel for="email" value="email:" />
+            <p:inputText id="email" value="#{KundeView.aktuellerKunde.email}" />
+
+            <p:outputLabel for="ausweisnr" value="Ausweis Nummer:" />
+            <p:inputText id="ausweisnr" value="#{KundeView.aktuellerKunde.ausweisnr}" readonly="true"/>
+
+            <p:outputLabel for="taxId" value="Id:" />
+            <p:inputText id="taxId" value="#{KundeView.aktuellerKunde.id}" readonly="true" style="width: 70%"/>
+
+            <p:commandButton value="Verwerfen" type="reset" />
+            <p:commandButton value="Speichern" update="@form" actionListener="#{kundeView.updateKunde()}"/>
+        </h:panelGrid>
+
+    </h:form>
+    <p:button outcome="/index" value="HOME" icon="ui-icon-home"></p:button>
+
+</h:body>
+</html>

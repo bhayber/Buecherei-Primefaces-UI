@@ -19,13 +19,13 @@
 
         <h:panelGrid columns="2" cellpadding="5">
             <h:outputLabel for="username" value="Username:" />
-            <p:inputText id="username" value="#{KundeView.name}" required="true" label="username" />
+            <p:inputText id="username" value="#{LoginView.email}" required="true" label="username" />
 
             <h:outputLabel for="password" value="Password:" />
-            <p:password id="password" value="#{KundeView.password}" required="true" label="password" />
+            <p:password id="password" value="#{LoginView.password}" required="true" label="password" />
 
             <f:facet name="footer">
-                <p:commandButton value="Login" update="growl" actionListener="#{KundeView.login}"
+                <p:commandButton value="Login" update="growl" actionListener="#{LoginView.login}"
                                  oncomplete="handleLoginRequest(xhr, status, args)" />
             </f:facet>
         </h:panelGrid>

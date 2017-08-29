@@ -100,9 +100,6 @@ public class KundeView implements Serializable{
         else{
             facesContext.addMessage(null,new FacesMessage("Fehler","Kundendaten konnten nicht aktuallisiert werden"));
         }
-
-
-        facesContext.addMessage(null,new FacesMessage("Erfolg","Kundendaten erfolgreich aktuallisiert"));
     }
 
 }

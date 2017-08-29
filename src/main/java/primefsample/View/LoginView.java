@@ -59,7 +59,7 @@ public class LoginView {
             try {
                 aktuellerKunde =  mapper.readValue(kundenResponse, Kunde.class);
                 if(aktuellerKunde != null && pwmaker.checkPassword(password,aktuellerKunde.getPassword())){
-                password = pwmaker.hashPassword(password);
+                    password = null;
                     loggedIn = true;
                     message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", email);
                 }

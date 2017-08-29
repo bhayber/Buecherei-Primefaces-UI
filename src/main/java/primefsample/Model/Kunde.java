@@ -1,5 +1,8 @@
 package primefsample.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -10,8 +13,12 @@ public class Kunde extends Person {
 
     private String ausweisnr;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date mitgliedSeit;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date austritt;
 
     public String getAusweisnr() {

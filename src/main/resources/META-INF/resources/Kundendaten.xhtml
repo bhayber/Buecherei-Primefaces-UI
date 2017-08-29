@@ -11,17 +11,23 @@
 <h:head>
 </h:head>
 <h:body>
+    <p:panel id="basic" header="Meine Kunden Daten"  style="margin-bottom:20px">
+        <h:panelGrid columns="2" cellpadding="10">
+            <p:graphicImage name="/content/images/userdata.png" width="10%"/>
+            <p:button outcome="/index" value="HOME" icon="ui-icon-home"></p:button>
+        </h:panelGrid>
+    </p:panel>
 
+    <h:button value="#{KundeView.loadButton}" update="form" style="visibility: hidden"/>
     <h:form id="form">
         <p:growl id="msgs" showDetail="true" />
-        <h:inputHidden  value="#{KundeView.email}"/>
-        <h:panelGrid columns="2"  style="width: 50%;align-content: inherit">
+        <h:panelGrid columns="2"  style="width: 50%">
 
             <p:outputLabel for="name" value="Name:" />
             <p:inputText id="name" value="#{KundeView.aktuellerKunde.name}" />
 
             <p:outputLabel for="adresse" value="Adresse:" />
-            <p:inputText id="adresse" value="#{KundeView.aktuellerKunde.adresse}" style="width: 70%" />
+            <p:inputText id="adresse" value="#{KundeView.aktuellerKunde.adresse}" style="width: 80%" />
 
             <p:outputLabel for="popup" value="Geburtsdatum:" />
             <p:calendar id="popup" value="#{KundeView.aktuellerKunde.gebDatum}" />
@@ -30,20 +36,25 @@
             <p:inputText id="phone" value="#{KundeView.aktuellerKunde.telmobile}" />
 
             <p:outputLabel for="email" value="email:" />
-            <p:inputText id="email" value="#{KundeView.aktuellerKunde.email}" />
+            <p:inputText id="email" value="#{KundeView.aktuellerKunde.email}" required="true"/>
 
             <p:outputLabel for="ausweisnr" value="Ausweis Nummer:" />
             <p:inputText id="ausweisnr" value="#{KundeView.aktuellerKunde.ausweisnr}" readonly="true"/>
 
+            <p:outputLabel for="geschlecht" value="Geschlecht:" />
+            <p:inputText id="geschlecht" value="#{KundeView.aktuellerKunde.geschlecht}" readonly="true"/>
+
+            <p:outputLabel for="mitgld" value="Mitglied Seit:" />
+            <p:calendar id="mitgld" value="#{KundeView.aktuellerKunde.mitgliedSeit}" readonly="true" />
+
             <p:outputLabel for="taxId" value="Id:" />
             <p:inputText id="taxId" value="#{KundeView.aktuellerKunde.id}" readonly="true" style="width: 70%"/>
 
-            <p:commandButton value="Verwerfen" type="reset" />
-            <p:commandButton value="Speichern" update="@form" actionListener="#{kundeView.updateKunde()}"/>
+            <p:commandButton value="Verwerfen" type="reset" update="form"/>
+            <p:commandButton value="Speichern" update="form" actionListener="#{kundeView.updateKunde()}" />
         </h:panelGrid>
-
     </h:form>
-    <p:button outcome="/index" value="HOME" icon="ui-icon-home"></p:button>
+
 
 </h:body>
 </html>

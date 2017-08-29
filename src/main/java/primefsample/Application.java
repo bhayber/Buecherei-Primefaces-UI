@@ -25,24 +25,24 @@ public class Application {
     }
 
 
-    @Bean
-    public ServletRegistrationBean facesServletRegistration() {
-
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
-        servletRegistrationBean.addUrlMappings("/META-INF/");
-        servletRegistrationBean.setLoadOnStartup(1);
-        return servletRegistrationBean;
-    }
-
-    @Bean
-    public ServletListenerRegistrationBean<ConfigureListener> jsfConfigureListener() {
-        return new ServletListenerRegistrationBean<ConfigureListener>(new ConfigureListener());
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public RequestContextListener getRequestContextListener() {
-        return new RequestContextListener();
-    }
+//    @Bean
+//    public ServletRegistrationBean facesServletRegistration() {
+//
+//        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
+//        servletRegistrationBean.addUrlMappings("/META-INF/");
+//        servletRegistrationBean.setLoadOnStartup(1);
+//        return servletRegistrationBean;
+//    }
+//
+//    @Bean
+//    public ServletListenerRegistrationBean<ConfigureListener> jsfConfigureListener() {
+//        return new ServletListenerRegistrationBean<ConfigureListener>(new ConfigureListener());
+//    }
+//
+//    @Bean
+//    @ConditionalOnMissingBean
+//    public RequestContextListener getRequestContextListener() {
+//        return new RequestContextListener();
+//    }
 
 }

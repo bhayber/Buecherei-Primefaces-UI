@@ -19,7 +19,6 @@ public class Person extends EntityBase implements Serializable {
     private String telmobile;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    // Allows dd/MM/yyyy date to be passed into GET request in JSON
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date gebDatum;
 
@@ -37,15 +36,6 @@ public class Person extends EntityBase implements Serializable {
         this.password = password;
     }
 
-
-    public Person(Person person) {
-        super();
-        this.adresse = person.adresse;
-        this.email = person.email;
-        this.gebDatum = person.gebDatum;
-        this.name = person.name;
-        this.telmobile = person.telmobile;
-    }
 
     public Person() {
 

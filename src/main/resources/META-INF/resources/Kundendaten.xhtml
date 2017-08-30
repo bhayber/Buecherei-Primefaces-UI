@@ -7,7 +7,7 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <link rel="stylesheet" href="content/css/mystyle.css"></link>
+    <link rel="stylesheet" href="content/css/Kundenview.css"></link>
 </h:head>
 <h:body>
     <p:panel id="basic" header="Meine Kunden Daten"  style="margin-bottom:20px">
@@ -28,8 +28,10 @@
             <p:outputLabel for="adresse" value="Adresse:" />
             <p:inputText id="adresse" value="#{KundeView.aktuellerKunde.adresse}" style="width: 80%" />
 
-            <p:outputLabel for="popup" value="Geburtsdatum:" />
-            <p:calendar id="popup" value="#{KundeView.aktuellerKunde.gebDatum}" />
+            <p:outputLabel for="gebdatum" value="Geburtsdatum:" />
+            <p:inputText id="gebdatum" value="#{KundeView.aktuellerKunde.gebDatum}" readonly="true" >
+                <f:convertDateTime pattern="dd.MM.yyyy" />
+            </p:inputText>
 
             <p:outputLabel for="phone" value="Phone:" />
             <p:inputText id="phone" value="#{KundeView.aktuellerKunde.telmobile}" />
@@ -44,7 +46,9 @@
             <p:inputText id="geschlecht" value="#{KundeView.aktuellerKunde.geschlecht}" readonly="true"/>
 
             <p:outputLabel for="mitgld" value="Mitglied Seit:" />
-            <p:calendar id="mitgld" value="#{KundeView.aktuellerKunde.mitgliedSeit}" readonly="true" />
+            <p:inputText id="mitgld" value="#{KundeView.aktuellerKunde.mitgliedSeit}" readonly="true" >
+                <f:convertDateTime pattern="dd.MM.yyyy" />
+            </p:inputText>
 
             <p:outputLabel for="taxId" value="Id:" />
             <p:inputText id="taxId" value="#{KundeView.aktuellerKunde.id}" readonly="true" style="width: 70%"/>

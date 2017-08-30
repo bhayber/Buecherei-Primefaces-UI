@@ -19,6 +19,8 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @ManagedBean(name="KundeView")
@@ -29,9 +31,35 @@ public class KundeView implements Serializable{
     RestInvoker restInvoker = new RestInvoker("http://localhost:9000/","admin","secret");
     ObjectMapper mapper = new ObjectMapper();
 
+    private Date currDate;
+
     private static Kunde aktuellerKunde;
 
     private List<Kunde> kundenList;
+
+    private String email;
+
+    private String loadButton ="Test";
+
+    @PostConstruct
+    private void init()  {
+        String kundenListResponse = restInvoker.getAllKundenDaten();
+        try {
+            kundenList = mapper.readValue(kundenListResponse, new TypeReference<List<Kunde>>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        currDate = Calendar.getInstance().getTime();
+    }
+
+    public Date getCurrDate() {
+        return currDate;
+    }
+
+    public void setCurrDate(Date currDate) {
+        this.currDate = currDate;
+    }
 
     public String getEmail()  {
         return email;
@@ -41,8 +69,6 @@ public class KundeView implements Serializable{
         this.email = email;
     }
 
-    private String email;
-
     public String getLoadButton() throws IOException{
         loadKunde();
         return loadButton;
@@ -51,8 +77,6 @@ public class KundeView implements Serializable{
     public void setLoadButton(String loadButton) {
         this.loadButton = loadButton;
     }
-
-    private String loadButton ="Test";
 
     @Autowired
     LoginView loginView;
@@ -70,20 +94,7 @@ public class KundeView implements Serializable{
         this.aktuellerKunde = aktuellerKunde;
     }
 
-    public void setKundenList(List<Kunde> kundenList) {
-        this.kundenList = kundenList;
-    }
 
-    @PostConstruct
-    private void init()  {
-        String kundenListResponse = restInvoker.getAllKundenDaten();
-        try {
-            kundenList = mapper.readValue(kundenListResponse, new TypeReference<List<Kunde>>() {
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void loadKunde() throws IOException {
         String kundenResponse = restInvoker.getKundenDatenForEmail(loginView.userLogin);

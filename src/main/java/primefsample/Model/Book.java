@@ -1,5 +1,8 @@
 package primefsample.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -10,15 +13,31 @@ public class Book extends EntityBase {
 
     private String isbnr;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date abgabeDatum;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date ausleihDatum;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date abgabefristDatum;
 
     private Kunde kunde;
 
     private Set<Book_Verlag> bookVerlag;
+
+    public StammBookGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(StammBookGenre genre) {
+        this.genre = genre;
+    }
+
+    private StammBookGenre genre;
 
     public Date getAbgabefristDatum() {
         return abgabefristDatum;

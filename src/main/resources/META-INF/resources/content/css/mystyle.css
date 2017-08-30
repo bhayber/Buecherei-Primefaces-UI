@@ -1,12 +1,12 @@
 
-                      #container {
-                          background: #666;
-                          margin: auto;
-                          width: 500px;
-                          height: 700px;
-                          padding-top: 30px;
-                          font-family: helvetica, arial, sans-serif;
-                      }
+#container {
+    background: #666;
+    margin: auto;
+    width: 500px;
+    height: 700px;
+    padding-top: 30px;
+    font-family: helvetica, arial, sans-serif;
+}
 
 h1 {
     background: #00ccff;
@@ -26,7 +26,8 @@ h1 {
 }
 
 .arrow {
-    width: 0; height: 0;
+    width: 0;
+    height: 0;
     line-height: 0;
     border-left: 20px solid transparent;
     border-top: 10px solid #c8c8c8;
@@ -43,4 +44,9 @@ p {
     text-align: justify;
 }
 
+.Closed {
+    background-color: #6CE26C !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
 

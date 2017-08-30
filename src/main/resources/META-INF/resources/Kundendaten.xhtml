@@ -5,10 +5,9 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:th="http://www.w3.org/1999/xhtml">
-
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
+    <link rel="stylesheet" href="content/css/mystyle.css"></link>
 </h:head>
 <h:body>
     <p:panel id="basic" header="Meine Kunden Daten"  style="margin-bottom:20px">
@@ -21,7 +20,7 @@
     <h:button value="#{KundeView.loadButton}" update="form" style="visibility: hidden"/>
     <h:form id="form">
         <p:growl id="msgs" showDetail="true" />
-        <h:panelGrid columns="2"  style="width: 50%">
+        <h:panelGrid columns="2"  style="width: 50%;alignment: left">
 
             <p:outputLabel for="name" value="Name:" />
             <p:inputText id="name" value="#{KundeView.aktuellerKunde.name}" />
@@ -52,7 +51,36 @@
 
             <p:commandButton value="Verwerfen" type="reset" update="form"/>
             <p:commandButton value="Speichern" update="form" actionListener="#{kundeView.updateKunde()}" />
+
         </h:panelGrid>
+        <p:panel header="Meine ausgeliehenen Bücher" toggleable="true">
+        <h:panelGrid width="70%" style="padding: 20px;alignment: left" columns="1">
+            <p:dataTable var="book" widgetVar="book" value="#{kundeView.aktuellerKunde.books}" rowStyleClass="#{(book.abgabefristDatum) le  (kundeView.currDate) ? 'Closed' : null}"    >
+                <p:column headerText="Titel" sortBy="#{book.titel}">
+                    <h:outputText value="#{book.titel}"  />
+                </p:column>
+
+                <p:column headerText="Abgabefrist" sortBy="#{book.abgabefristDatum}">
+                    <p:outputLabel value="#{book.abgabefristDatum}" >
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </p:outputLabel>
+                </p:column>
+
+                <p:column headerText="Ausleihdatum" sortBy="#{book.ausleihDatum}">
+                    <h:outputText value="#{book.ausleihDatum}" >
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Genre" sortBy="#{book.genre.bezeichnung}">
+                    <h:outputText value="#{book.genre.bezeichnung}"  />
+                </p:column>
+
+                <p:column headerText="Isbnr">
+                    <h:outputText value="#{book.isbnr}" />
+                </p:column>
+            </p:dataTable>
+        </h:panelGrid></p:panel>
     </h:form>
 
 

@@ -24,7 +24,6 @@ public class LoginView {
 
     public static String userLogin;
 
-
     public String getEmail() {
         return email;
     }

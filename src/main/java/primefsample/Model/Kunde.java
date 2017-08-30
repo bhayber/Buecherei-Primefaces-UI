@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 
 public class Kunde extends Person {
 
-    private Set<Book> books;
+    private List<Book> books;
 
     private String ausweisnr;
 
@@ -45,11 +45,11 @@ public class Kunde extends Person {
         this.austritt = austritt;
     }
 
-    public Set<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 }

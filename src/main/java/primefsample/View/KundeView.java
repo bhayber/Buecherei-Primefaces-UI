@@ -1,5 +1,6 @@
 package primefsample.View;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.primefaces.context.RequestContext;
@@ -102,13 +103,18 @@ public class KundeView implements Serializable{
         aktuellerKunde.setPassword("");
     }
 
-    public void updateKunde() throws IOException {
-        String kundenResponse = restInvoker.updateKundenDaten(aktuellerKunde);
+    public void updateKunde()  {
+        String kundenResponse = null;
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        if (kundenResponse.contains("Kunde succesfully updated!")){
-            facesContext.addMessage(null,new FacesMessage("Erfolg","Kundendaten erfolgreich aktuallisiert"));
-        }
-        else{
+        try {
+            kundenResponse = restInvoker.updateKundenDaten(aktuellerKunde);
+            if (kundenResponse.contains("Kunde succesfully updated!")){
+                facesContext.addMessage(null,new FacesMessage("Erfolg","Kundendaten erfolgreich aktuallisiert"));
+            }
+            else{
+                facesContext.addMessage(null,new FacesMessage("Fehler","Kundendaten konnten nicht aktuallisiert werden"));
+            }
+        } catch (JsonProcessingException e) {
             facesContext.addMessage(null,new FacesMessage("Fehler","Kundendaten konnten nicht aktuallisiert werden"));
         }
     }

@@ -41,8 +41,9 @@ public class RestInvoker {
     }
 
 
-    /**
-    * Methode um Serveranfragen (PUT, POST) anhand von JSON Objekten zu stellen
+    /***
+     * Ruft den Testapp Webservice auf.
+    * Methode um Serveranfragen (PUT, POST) anhand von JSON Objekten zu erstellen.
     * @param path Der Requestpfad der aufzurufen ist
     * @param object Objekt das als Json zum Server übertragen wird
     * @param requestMethod PUT oder POST
